@@ -7,6 +7,7 @@ import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Modal } from './Modal/Modal';
 import { Button } from './Button/Button';
 
+
 export class App extends Component {
   state = {
     currentPage: 1,
@@ -27,18 +28,24 @@ export class App extends Component {
       try {
         this.setState({
           isLoading: true,
-          error: '',
+          error: "",
         });
-        const { totalHits, hits } = await fetchImages(searchQuery, currentPage);
+        const { totalHits, hits } = await fetchImages(
+          searchQuery,
+          currentPage
+        );
         this.setState(prevState => {
           return {
             images: [...prevState.images, ...hits],
             totalHits: totalHits,
           };
         });
+       
+
+        
       } catch (error) {
         this.setState({
-          error: 'Error fetching images: ',
+          error: "Error fetching images: ",
         });
         console.error('Error fetching images: ', error);
       } finally {
@@ -72,6 +79,8 @@ export class App extends Component {
     });
   };
 
+
+  
   render() {
     const {
       images,
@@ -99,4 +108,4 @@ export class App extends Component {
       </div>
     );
   }
-}
+};
