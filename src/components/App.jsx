@@ -51,7 +51,7 @@ export const App = () => {
 
   const closeModal = () => {
     setIsOpenModal(false);
-    setImages(prevImages => [...prevImages]);
+   setModalImage(null);
   };
 
   const showBtn = Math.ceil(totalHits / 12) > currentPage;
